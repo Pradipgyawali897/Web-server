@@ -1,7 +1,7 @@
 #ifndef Connectingsocket_hpp
 #define Connectingsocket_hpp
 #include<stdio.h>
-
+#include<iostream>
 #include "simple_socket.hpp"
 
 namespcae HDE{
