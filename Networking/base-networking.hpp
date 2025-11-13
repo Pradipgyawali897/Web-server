@@ -1,5 +1,6 @@
-#ifndef base-networking_hpp
-#define base-networking_hpp
+#ifndef BASE_NETWORKING_HPP
+#define BASE_NETWORKING_HPP
+
 #include "Sockets/base.hpp"
 
 #endif // !
