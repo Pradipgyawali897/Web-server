@@ -12,7 +12,7 @@ HDE::RequestHandler::RequestHandler(std::string request) {
     version = stof(request_line.substr(pos2 + 1));
 
     size_t pos_2 = request.find("\r\n\r\n");
-    headers = request.substr(pos_1 + 2, pos_2 - (pos_1 + 2));
+    raw_headers = request.substr(pos_1 + 2, pos_2 - (pos_1 + 2));
 
     body = request.substr(pos_2 + 4);
 }

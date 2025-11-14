@@ -18,7 +18,7 @@ namespace HDE{
             std::string method;
             std::string uri;
             float version;
-            std::string headers;
+            std::string raw_headers;
             std::string body;
             public:
             RequestHandler(std::string request);
