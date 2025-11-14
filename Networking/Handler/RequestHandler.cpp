@@ -10,7 +10,14 @@ HDE::RequestHandler::RequestHandler(std::string request) {
 
     method  = request_line.substr(0, pos1);
     uri     = request_line.substr(pos1 + 1, pos2 - pos1 - 1);
-    version = stof(request_line.substr(pos2 + 1));
+    std::string version_str = request_line.substr(pos2 + 1);
+    size_t slash = version_str.find('/');
+    if (slash != std::string::npos) {
+        version = std::stof(version_str.substr(slash + 1)); 
+    } else {
+        version = 1.1; 
+    }
+
 
     size_t pos_2 = request.find("\r\n\r\n");
     std::string raw_headers = request.substr(pos_1 + 2, pos_2 - (pos_1 + 2));

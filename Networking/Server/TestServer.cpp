@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 
+#include "../Handler/RequestHandler.hpp"
 using namespace HDE;
 
 TestServer::TestServer(int domain, int service, int protocol, int port, u_long interface, int bklog)
@@ -29,7 +30,8 @@ void TestServer::handlor() {
         perror("Error reading from client");
         return;
     }
-
+     std::string requestStr(buffer, bytesReceived); 
+     RequestHandler req(requestStr); 
     std::cout << "Received request:\n" << buffer << std::endl;
 }
 
