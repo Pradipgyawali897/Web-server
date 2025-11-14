@@ -1,19 +1,9 @@
-#ifndef HEADER_PARSOR_HPP
-#define HEADER_PARSOR_HPP
+#ifndef HeaderParsor_hpp
+#define HeaderParsor_hpp
 
-#include <map>
 #include <string>
-#include "RequestHandler.hpp"
+#include <map>
 
-namespace HDE {
-
-class HeaderParser {
-    protected:
-        std::map<std::string, std::string> headers;
-public:
-    HeaderParser(const std::string& raw_headers);
-};
-
-}
+std::map<std::string, std::string> parseHeaders(const std::string& raw_headers);
 
 #endif

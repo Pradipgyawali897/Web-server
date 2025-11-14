@@ -1,4 +1,5 @@
 #include "RequestHandler.hpp"
+#include "HeaderParsor.hpp"
 
 HDE::RequestHandler::RequestHandler(std::string request) {
     size_t pos_1 = request.find("\r\n");
@@ -12,7 +13,10 @@ HDE::RequestHandler::RequestHandler(std::string request) {
     version = stof(request_line.substr(pos2 + 1));
 
     size_t pos_2 = request.find("\r\n\r\n");
-    raw_headers = request.substr(pos_1 + 2, pos_2 - (pos_1 + 2));
+    std::string raw_headers = request.substr(pos_1 + 2, pos_2 - (pos_1 + 2));
 
+
+
+    std::map<std::string, std::string> header=parseHeaders(raw_headers);
     body = request.substr(pos_2 + 4);
 }

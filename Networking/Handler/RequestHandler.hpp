@@ -1,6 +1,9 @@
 #ifndef RequestHandler_hpp
 #define RequestHandler_hpp
 #include<string>
+#include <map>
+
+#include "HeaderParsor.hpp"
 namespace HDE{
         enum  HttpMethod {
             GET,
@@ -18,7 +21,7 @@ namespace HDE{
             std::string method;
             std::string uri;
             float version;
-            std::string raw_headers;
+            std::map<std::string, std::string> header;
             std::string body;
             public:
             RequestHandler(std::string request);
