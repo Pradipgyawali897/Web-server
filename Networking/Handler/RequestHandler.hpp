@@ -19,6 +19,7 @@ namespace HDE{
         };
         class RequestHandler{
             std::string method;
+            std::map<std::string, std::string> data;
             std::string uri;
             float version;
             std::map<std::string, std::string> header;
@@ -26,6 +27,6 @@ namespace HDE{
             public:
             RequestHandler(std::string request);
     };
-}
+};
 
-#endif // !RequestHandler_hpp
+#endif // 
