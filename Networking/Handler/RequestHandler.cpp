@@ -16,27 +16,7 @@ HDE::RequestHandler::RequestHandler(std::string request) {
         size_t qpos = uri.find("?");
         std::string string_data = uri.substr(qpos + 1);
         uri = uri.substr(0, qpos);
-
-        size_t start = 0;
-        while (start < string_data.length()) {
-            size_t eq_pos = string_data.find("=", start);
-            size_t amp_pos = string_data.find("&", start);
-
-            if (eq_pos == std::string::npos) break;
-
-            std::string key = string_data.substr(start, eq_pos - start);
-            std::string value;
-
-            if (amp_pos == std::string::npos) {
-                value = string_data.substr(eq_pos + 1);
-                data[key] = value;
-                break;
-            } else {
-                value = string_data.substr(eq_pos + 1, amp_pos - eq_pos - 1);
-                data[key] = value;
-                start = amp_pos + 1;
-            }
-        }
+        data=data_extractor(string_data);
     }
 
     std::string version_str = request_line.substr(pos2 + 1);
@@ -50,4 +30,29 @@ HDE::RequestHandler::RequestHandler(std::string request) {
 
     std::map<std::string, std::string> header = parseHeaders(raw_headers);
     body = request.substr(pos_2 + 4);
+  
+}
+
+std::map<std::string, std::string> data_extractor(std::string string_data){
+    size_t start = 0;
+    std::map<std::string, std::string> data;
+        while (start < string_data.length()) {
+            size_t eq_pos = string_data.find("=", start);
+            size_t amp_pos = string_data.find("&", start);
+
+            if (eq_pos == std::string::npos) return data;
+
+            std::string key = string_data.substr(start, eq_pos - start);
+            std::string value;
+            if (amp_pos == std::string::npos) {
+                value = string_data.substr(eq_pos + 1);
+                data[key] = value;
+                return data;
+            } else {
+                value = string_data.substr(eq_pos + 1, amp_pos - eq_pos - 1);
+                data[key] = value;
+                start = amp_pos + 1;
+            }
+        }
+        return data;
 }

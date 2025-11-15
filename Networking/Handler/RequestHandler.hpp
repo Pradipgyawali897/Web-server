@@ -26,6 +26,7 @@ namespace HDE{
             std::string body;
             public:
             RequestHandler(std::string request);
+            std::map<std::string, std::string> data_extractor(std::string string_data);
     };
 };
 
