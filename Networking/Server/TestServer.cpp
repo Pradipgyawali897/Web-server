@@ -30,28 +30,31 @@ void TestServer::handlor() {
         perror("Error reading from client");
         return;
     }
-     std::string requestStr(buffer, bytesReceived); 
-     RequestHandler req(requestStr);
-     
+
+    std::string requestStr(buffer, bytesReceived);
+    RequestHandler req(requestStr);
+    std::cout<<req;
     std::cout << "Received request:\n" << buffer << std::endl;
 }
 
-void TestServer::responder() {
-    const char* httpResponse =
+void TestServer::responder(const std::string &body) {
+    std::string httpResponse =
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: text/html\r\n"
         "Connection: close\r\n\r\n"
-        "<html><body><h1>Hello from your C++ Web Server </h1></body></html>";
+        + body;
 
-    send(new_socket, httpResponse, strlen(httpResponse), 0);
-    std::cout << "Response sent to client.\n";
+    send(new_socket, httpResponse.c_str(), httpResponse.size(), 0);
     close(new_socket);
 }
 
 void TestServer::lunch() {
+    int count=0;
     while (true) {
         acceptor();
         handlor();
-        responder();
+        if (count==0)
+        responder("<h1>Hello</h1>");
+        count++;
     }
 }

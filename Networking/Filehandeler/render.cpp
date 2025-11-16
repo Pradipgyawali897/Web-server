@@ -1,15 +1,20 @@
 #include "render.hpp"
-#include<iostream>
+#include <iostream>
 #include <fstream>
-#include<string>
+#include <sstream>
+#include <string>
 
-std::string render(HDE::RequestHandler request,std::string &path){
-    std::string full_path=path+".html";
-    std::ifstream in(path,std::ios::in);
-    if(!in){
-        std::cout<<"NO such file found";
+std::string render(const HDE::RequestHandler &request, const std::string &path) {
+    std::string full_path = path + ".html";
+
+    std::ifstream in(full_path);
+    if (!in.is_open()) {
+        std::cout << "No such file found: " << full_path << std::endl;
+        return "<h1>404 - File Not Found</h1>";
     }
-    std::string file_content;
-    in>>file_content;
-    
+
+    std::stringstream buffer;
+    buffer << in.rdbuf();  
+
+    return buffer.str();
 }

@@ -1,8 +1,8 @@
-#include "register.hpp"
 #include <string>
 #include <map>
 #include "router.hpp"
 #include "../Handler/RequestHandler.hpp"
+
 namespace Hde {
     Router router;   // Global router instance
 }

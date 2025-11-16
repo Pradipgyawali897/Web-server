@@ -1,21 +1,25 @@
-#ifndef simpleserver_hpp
-#define simpleserver_hpp
-#include<stdio.h>
+#ifndef SIMPLESERVER_HPP
+#define SIMPLESERVER_HPP
+
+#include <string>
 #include "../base-networking.hpp"
 
+namespace HDE {
 
-namespace HDE{
-    class SimpleServer{
+    class SimpleServer {
         Listeningsocket *socket;
-        virtual void acceptor()=0;
-        virtual void handlor()=0;
-        virtual void responder()=0;
-        public:
+
+        virtual void acceptor() = 0;
+        virtual void handlor() = 0;
+        virtual void responder(const std::string &body);  // changed to const reference
+
+    public:
         SimpleServer(int domain, int service, int protocol, int port, u_long interface, int bklog);
-        virtual void lunch()=0;
-        Listeningsocket * get_socket();
-         ~SimpleServer();
+        virtual void lunch() = 0;
+        Listeningsocket *get_socket();
+        virtual ~SimpleServer();
     };
+
 }
 
-#endif // !simpleserver_hpp
+#endif
