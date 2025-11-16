@@ -12,6 +12,6 @@ namespace Hde
         void(*get_handler(std::string path))(void);
 
     };
+    extern Router router;
 }
-
 #endif // !router_hpp

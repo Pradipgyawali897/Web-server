@@ -31,7 +31,7 @@ void TestServer::handlor() {
         return;
     }
      std::string requestStr(buffer, bytesReceived); 
-     RequestHandler req(requestStr); 
+     RequestHandler req(requestStr);
     std::cout << "Received request:\n" << buffer << std::endl;
 }
 
