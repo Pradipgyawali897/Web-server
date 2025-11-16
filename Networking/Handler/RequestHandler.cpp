@@ -30,6 +30,7 @@ HDE::RequestHandler::RequestHandler(std::string request) {
 
     std::map<std::string, std::string> header = parseHeaders(raw_headers);
     body = request.substr(pos_2 + 4);
+    Hde::router.route(uri,request);
 }
 
 std::map<std::string, std::string> data_extractor(std::string string_data){

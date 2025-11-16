@@ -1,9 +1,11 @@
 #include "router.hpp"
 #include "../Handler/RequestHandler.hpp"
+#include "../Filehandeler/render.hpp"
+#include "../Handler/RequestHandler.hpp"
 using namespace Hde;
 
-    void hello_handler(){
-        return 
+    std::string hello_handler(const HDE::RequestHandler &request){
+        return render(request,"hello");
         
     }
     void handel_regestration(){

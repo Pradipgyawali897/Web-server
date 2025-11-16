@@ -2,6 +2,7 @@
 #define RequestHandler_hpp
 #include<string>
 #include <map>
+#include "../PathHandler/router.hpp"
 
 #include "HeaderParsor.hpp"
 namespace HDE{
@@ -27,6 +28,7 @@ namespace HDE{
             public:
             RequestHandler(std::string request);
             std::map<std::string, std::string> data_extractor(std::string string_data);
+            
     };
 };
 

@@ -8,6 +8,8 @@ std::string render(HDE::RequestHandler request,std::string &path){
     std::ifstream in(path,std::ios::in);
     if(!in){
         std::cout<<"NO such file found";
-        
     }
+    std::string file_content;
+    in>>file_content;
+    
 }

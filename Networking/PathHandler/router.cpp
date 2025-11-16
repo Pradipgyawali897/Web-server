@@ -2,12 +2,12 @@
 #include <string>
 #include <map>
 #include "router.hpp"
-
+#include "../Handler/RequestHandler.hpp"
 namespace Hde {
     Router router;   // Global router instance
 }
 
-bool Hde::Router::route(std::string path) {
+bool Hde::Router::route(std::string path,const HDE::RequestHandler& request) {
     auto path_map = get_path_map();
     auto it = path_map.find(path);
 
@@ -15,16 +15,16 @@ bool Hde::Router::route(std::string path) {
         return false;
     }
 
-    void(*handler_function)(void) = get_handler(path);
+    auto handler_function = get_handler(path);
     if (handler_function) {
-        handler_function();
+        handler_function(request);
         return true;
     }
 
     return false;
 }
 
-void (*Hde::Router::get_handler(std::string path))(void) {
+std::string (*Hde::Router::get_handler(std::string path))(const  HDE::RequestHandler &) {
     auto path_map = get_path_map();
     auto it = path_map.find(path);
 
