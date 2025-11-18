@@ -10,7 +10,7 @@ HDE::RequestHandler::RequestHandler(std::string request) {
     size_t pos2 = request_line.find(' ', pos1 + 1);
 
     method = request_line.substr(0, pos1);
-    uri = request_line.substr(pos1 + 1, pos2 - pos1 - 1);
+    uri = request_line.substr(pos1 +2, pos2 - pos1 - 1);
 
     if (uri.find("?") != std::string::npos && method == "GET") {
         size_t qpos = uri.find("?");
@@ -28,8 +28,10 @@ HDE::RequestHandler::RequestHandler(std::string request) {
     size_t pos_2 = request.find("\r\n\r\n");
     std::string raw_headers = request.substr(pos_1 + 2, pos_2 - (pos_1 + 2));
 
+
     std::map<std::string, std::string> header = parseHeaders(raw_headers);
-    body = request.substr(pos_2 + 4);
+    this->header = header;
+    this->body = request.substr(pos_2 + 4);
 
     Hde::router.route(uri, *this); 
 }
@@ -61,27 +63,3 @@ std::map<std::string, std::string> HDE::RequestHandler::data_extractor(std::stri
     return data;
 }
 
-namespace HDE {
-    std::ostream& operator<<(std::ostream& out, RequestHandler data) {
-        out << "--------- HTTP Request Details ---------" << '\n';
-        out << "Method: " << data.method << '\n';
-        out << "URI: " << data.uri << '\n';
-        out << "HTTP Version: " << data.version << '\n';
-
-        out << "----- Headers -----" << '\n';
-        for (const auto& h : data.header) {
-            out << h.first << ": " << h.second << '\n';
-        }
-
-        out << "----- Body -----" << '\n';
-        out << data.body << '\n';
-
-        out << "----- Data Fields (Parsed) -----" << '\n';
-        for (const auto& item : data.data) {
-            out << item.first << " = " << item.second << '\n';
-        }
-
-        out << "----------------------------------------" << '\n';
-        return out;
-    }
-}

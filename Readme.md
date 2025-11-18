@@ -1,5 +1,5 @@
 Webserver made from scratch to run this use the command 
- g++ -std=c++17 main.cpp Networking/Sockets/simple_socket.cpp Networking/Sockets/Binding_sockect.cpp Networking/Sockets/Connectingsocket.cpp Networking/Sockets/Listeningsocket.cpp Networking/Server/simpleserver.cpp Networking/Server/TestServer.cpp Networking/Handler/RequestHandler.cpp Networking/Handler/HeaderParsor.cpp -o webserver -lpthread
+ g++ -std=c++17 main.cpp Networking/Sockets/simple_socket.cpp Networking/Sockets/Binding_sockect.cpp Networking/Sockets/Connectingsocket.cpp Networking/Sockets/Listeningsocket.cpp Networking/Server/simpleserver.cpp Networking/Server/TestServer.cpp Networking/Handler/RequestHandler.cpp Networking/Handler/HeaderParsor.cpp Networking/PathHandler/register.cpp Networking/PathHandler/router.cpp -o webserver -lpthread
 
 
  

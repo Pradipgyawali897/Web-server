@@ -10,7 +10,6 @@ namespace Hde {
 bool Hde::Router::route(std::string path,const HDE::RequestHandler& request) {
     auto path_map = get_path_map();
     auto it = path_map.find(path);
-
     if (it == path_map.end()) {
         return false;
     }

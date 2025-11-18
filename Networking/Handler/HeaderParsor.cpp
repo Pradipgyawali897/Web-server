@@ -1,5 +1,5 @@
 #include"HeaderParsor.hpp"
-
+#include<iostream>
 
 std::map<std::string, std::string> parseHeaders(const std::string& raw_headers) {
     std::map<std::string, std::string> headers;
@@ -23,6 +23,7 @@ std::map<std::string, std::string> parseHeaders(const std::string& raw_headers) 
 
         headers[key] = value;
     }
+
 
     return headers;
 }

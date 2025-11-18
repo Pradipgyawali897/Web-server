@@ -29,7 +29,6 @@ namespace HDE{
             public:
             RequestHandler(std::string request);
             std::map<std::string, std::string> data_extractor(std::string string_data);
-            friend std::ostream& operator <<(std::ostream & out,RequestHandler req);
             
     };
 };
