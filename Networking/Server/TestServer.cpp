@@ -51,9 +51,10 @@ void TestServer::handlor() {
     std::cout << "Received request:\n" << buffer << std::endl;
 }
 
+TestServer:: ~TestServer(){
 
+}
 void TestServer::lunch() {
-    int count=0;
     while (true) {
         acceptor();
         handlor();

@@ -17,6 +17,7 @@ namespace HDE {
         void handlor() override;
         void responder(const std::string &body) override;  // must match base
         void lunch() override;
+         ~TestServer();
     };
 
 }
