@@ -10,7 +10,7 @@ HDE::RequestHandler::RequestHandler(std::string request) {
     size_t pos2 = request_line.find(' ', pos1 + 1);
 
     method = request_line.substr(0, pos1);
-    uri = request_line.substr(pos1 +2, pos2 - pos1 - 1);
+    uri = request_line.substr(pos1 + 1, pos2 - pos1 - 1);
 
     if (uri.find("?") != std::string::npos && method == "GET") {
         size_t qpos = uri.find("?");

@@ -33,7 +33,6 @@ void TestServer::handlor() {
 
     std::string requestStr(buffer, bytesReceived);
     RequestHandler req(requestStr);
-    std::cout<<req;
     std::cout << "Received request:\n" << buffer << std::endl;
 }
 
@@ -53,8 +52,5 @@ void TestServer::lunch() {
     while (true) {
         acceptor();
         handlor();
-        if (count==0)
-        responder("<h1>Hello</h1>");
-        count++;
     }
 }
