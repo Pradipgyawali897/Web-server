@@ -1,13 +1,12 @@
-#include "Routeregesteration.hpp"
-namespace Hde {
+#include "Routeregesteration.hpp"  
+#include "../Filehandeler/render.hpp"    
+#include <iostream>
 
-std::string hello_handler(const HDE::RequestHandler &request) {
-    std::cout << "hello handler called" << std::endl;
+std::string hello_handler(const HDE::RequestHandler& request) {
     return render(request, "hello");
 }
 
-void handel_regestration() {
-    router.register_path("/", hello_handler);
+bool HDE::handle_registration() {         
+    Hde::router.register_path("/", hello_handler);   
+    return true;
 }
-
-} // namespace Hde

@@ -4,6 +4,6 @@
 #include<algorithm>
 #include "../Handler/RequestHandler.hpp"
 
-std::string render(HDE::RequestHandler request,std::string path);
+std::string render(const HDE::RequestHandler &request, const std::string &path);
 
 

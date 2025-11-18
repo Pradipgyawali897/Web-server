@@ -8,22 +8,20 @@ namespace Hde {
     Router router;   // Global router instance
 }
 
-bool Hde::Router::route(std::string path,const HDE::RequestHandler& request) {
+std::string Hde::Router::route(std::string path,const HDE::RequestHandler& request) {
     std::cout << "Routing path: " << path << std::endl;
-    handel_regestration();//Here to debug up to 
     auto it = this->path_map[path];
     if (it == nullptr) {
         std::cout << "No handler found for path: " << path << std::endl;
-        return false;
+        return "<h1>404 - Not Found</h1>";
     }
     auto handler_function = get_handler(path);
     if (handler_function) {
-        handler_function(request);
-        std::cout << "Routed to handler for path: " << path << std::endl;
-        return true;
+        return handler_function(request);
+        
     }
 
-    return false;
+    return "<h1>404 - Not Found</h1>";
 }
 
 std::string (*Hde::Router::get_handler(std::string path))(const  HDE::RequestHandler &) {

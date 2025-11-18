@@ -9,12 +9,14 @@
 #include "../Handler/RequestHandler.hpp"
 
 
-namespace Hde {
+
+
 
 std::string hello_handler(const HDE::RequestHandler &request);
+namespace HDE {
 
-void handel_regestration();
+bool handle_registration();
 
-} 
+}
 
 #endif // HANDLER_HPP

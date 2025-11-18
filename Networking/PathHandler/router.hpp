@@ -12,7 +12,7 @@ namespace Hde {
 
 class Router : public PathRegistry {
 public:
-    bool route(std::string path, const HDE::RequestHandler &request);
+    std::string route(std::string path, const HDE::RequestHandler &request);
     std::string (*get_handler(std::string path))(const HDE::RequestHandler &);
 };
 

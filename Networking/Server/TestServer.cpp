@@ -3,7 +3,8 @@
 #include <netinet/in.h>
 #include <cstring>
 #include <iostream>
-
+#include "../PathHandler/router.hpp"
+#include "../PathHandler/Routeregesteration.hpp"
 #include "../Handler/RequestHandler.hpp"
 using namespace HDE;
 
@@ -23,19 +24,6 @@ void TestServer::acceptor() {
     std::cout << "New client connected!" << std::endl;
 }
 
-void TestServer::handlor() {
-    char buffer[1024] = {0};
-    int bytesReceived = read(new_socket, buffer, 1024);
-    if (bytesReceived < 0) {
-        perror("Error reading from client");
-        return;
-    }
-
-    std::string requestStr(buffer, bytesReceived);
-    RequestHandler req(requestStr);
-    std::cout << "Received request:\n" << buffer << std::endl;
-}
-
 void TestServer::responder(const std::string &body) {
     std::string httpResponse =
         "HTTP/1.1 200 OK\r\n"
@@ -46,6 +34,23 @@ void TestServer::responder(const std::string &body) {
     send(new_socket, httpResponse.c_str(), httpResponse.size(), 0);
     close(new_socket);
 }
+
+void TestServer::handlor() {
+    char buffer[1024] = {0};
+    int bytesReceived = read(new_socket, buffer, 1024);
+    if (bytesReceived < 0) {
+        perror("Error reading from client");
+        return;
+    }
+
+    std::string requestStr(buffer, bytesReceived);
+    RequestHandler req(requestStr);
+    handle_registration();
+    std::string routed_response= Hde::router.route(req.get_uri(), req);
+    responder(routed_response);
+    std::cout << "Received request:\n" << buffer << std::endl;
+}
+
 
 void TestServer::lunch() {
     int count=0;
