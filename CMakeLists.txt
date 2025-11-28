@@ -29,3 +29,11 @@ add_executable(webserver
 )
 
 target_link_libraries(webserver pthread)
+
+# ===== ADD THIS SECTION =====
+# Copy HTML files to build directory
+file(GLOB HTML_FILES ${CMAKE_SOURCE_DIR}/*.html)
+file(COPY ${HTML_FILES} DESTINATION ${CMAKE_BINARY_DIR})
+
+# Or if you want a templates folder (recommended):
+file(COPY ${CMAKE_SOURCE_DIR}/templates DESTINATION ${CMAKE_BINARY_DIR})
