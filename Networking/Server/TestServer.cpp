@@ -45,7 +45,7 @@ void TestServer::handlor() {
 
     std::string requestStr(buffer, bytesReceived);
     RequestHandler req(requestStr);
-    handle_registration();
+    
     std::string routed_response= Hde::router.route(req.get_uri(), req);
     responder(routed_response);
     std::cout << "Received request:\n" << buffer << std::endl;
@@ -55,6 +55,7 @@ TestServer:: ~TestServer(){
 
 }
 void TestServer::lunch() {
+    handle_registration();
     while (true) {
         acceptor();
         handlor();

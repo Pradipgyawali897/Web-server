@@ -11,7 +11,7 @@ namespace HDE {
 
         virtual void acceptor() = 0;
         virtual void handlor() = 0;
-        virtual void responder(const std::string &body);  // changed to const reference
+        virtual void responder(const std::string &body);  
 
     public:
         SimpleServer(int domain, int service, int protocol, int port, u_long interface, int bklog);

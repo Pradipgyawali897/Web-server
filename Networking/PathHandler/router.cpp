@@ -21,7 +21,7 @@ std::string Hde::Router::route(std::string path,const HDE::RequestHandler& reque
         
     }
 
-    return "<h1>404 - Not Found</h1>";
+    return "<h1>404 -Handler Not Found</h1>";
 }
 
 std::string (*Hde::Router::get_handler(std::string path))(const  HDE::RequestHandler &) {

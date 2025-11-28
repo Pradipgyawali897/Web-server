@@ -23,6 +23,7 @@ namespace HDE{
             std::string method;
             std::map<std::string, std::string> data;
             std::string uri;
+            bool is_favicon_request;
             float version;
             std::map<std::string, std::string> header;
             std::string body;

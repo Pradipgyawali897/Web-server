@@ -13,7 +13,16 @@ HDE::RequestHandler::RequestHandler(std::string request)
 
     method = request_line.substr(0, pos1);
     uri = request_line.substr(pos1 + 1, pos2 - pos1 - 1);
+    
 
+    size_t favicon_pos = uri.find("/favicon.ico");
+    if (favicon_pos != std::string::npos){
+        uri = "/";
+        is_favicon_request = true;
+        std::cout << "Favicon request detected. Redirecting to root URI." << std::endl;
+    }
+
+    std::cout << "Parsed URI: " << uri << std::endl;
     if (uri.find("?") != std::string::npos && method == "GET")
     {
         size_t qpos = uri.find("?");
