@@ -1,3 +1,0 @@
-/home/xenox/Desktop/programs/Web_Server/build/CMakeFiles/webserver.dir
-/home/xenox/Desktop/programs/Web_Server/build/CMakeFiles/edit_cache.dir
-/home/xenox/Desktop/programs/Web_Server/build/CMakeFiles/rebuild_cache.dir
