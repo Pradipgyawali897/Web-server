@@ -31,6 +31,13 @@ namespace HDE{
             RequestHandler(std::string request);
             std::map<std::string, std::string> data_extractor(std::string string_data);
             std::string get_uri() const;
+            std::string get_method() const;
+            std::map<std::string, std::string> get_data() const;
+            bool favicon_request() const;
+            float get_version() const;
+            std::map<std::string, std::string> get_header() const;
+            std::string get_body() const;
+            
     };
 };
 

@@ -82,3 +82,23 @@ std::map<std::string, std::string> HDE::RequestHandler::data_extractor(std::stri
 std::string HDE::RequestHandler::get_uri() const {
     return uri;
 }
+
+std::string HDE::RequestHandler::get_method() const {
+    return method;
+}   
+std::map<std::string, std::string> HDE::RequestHandler::get_data() const {
+    return data;
+}
+bool HDE::RequestHandler::favicon_request() const {
+    return is_favicon_request;
+}
+float HDE::RequestHandler::get_version() const {
+    return version;
+}
+std::map<std::string, std::string> HDE::RequestHandler::get_header() const {
+    return header;
+}
+std::string HDE::RequestHandler::get_body() const {
+    return body;
+}
+

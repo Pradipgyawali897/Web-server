@@ -4,6 +4,8 @@
 #include <sstream>
 #include <string>
 #include "../Server/TestServer.hpp"
+#include "../Filehandeler/status_defination.hpp"
+#include "../Handler/RequestHandler.hpp"
 
 std::string render(const HDE::RequestHandler &request, const std::string &path) {
     std::string full_path = "templates/" + path + ".html";  
@@ -19,7 +21,7 @@ std::string render(const HDE::RequestHandler &request, const std::string &path) 
     return buffer.str();
 }
 
-std::string create_response(const std::string &request,int status){
+std::string create_response(const HDE::RequestHandler &request,int status){
     
     
 }
