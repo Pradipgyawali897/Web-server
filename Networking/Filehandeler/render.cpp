@@ -18,3 +18,8 @@ std::string render(const HDE::RequestHandler &request, const std::string &path) 
     in.close();
     return buffer.str();
 }
+
+std::string create_response(const std::string &request,int status){
+    
+    
+}

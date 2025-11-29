@@ -6,4 +6,10 @@
 
 std::string render(const HDE::RequestHandler &request, const std::string &path);
 
+std::string create_response(const std::string &request,int status=200);
+   
+    
+
+
+
 
